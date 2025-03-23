@@ -1,56 +1,62 @@
-# Research Chatbot
+# Climate Change Solutions Chatbot
 
-A minimalist, Apple-inspired chat interface for integration with n8n webhooks. This project follows design principles inspired by Apple, Steve Jobs, Jony Ive, and Dieter Rams.
+An Apple-inspired chat interface for discussing climate change solutions, with n8n webhook integration.
+
+![Climate Change Solutions Chatbot](https://github.com/emaduneme/research-chatbot/blob/main/docs/screenshot.png)
+
+## Live Demo
+
+Try the application at:
+- [GitHub Repository](https://github.com/emaduneme/research-chatbot)
+- *Live demo link will be added after deployment*
 
 ## Features
 
-- Clean, minimalist UI with glassmorphism effects
-- Responsive design for all devices
-- Integration with n8n webhooks
-- Real-time chat functionality
+- 🎨 Apple-inspired UI design with glassmorphism effects
+- 🌓 Dark/light theme toggle with system preference detection
+- 💬 Interactive chat interface with loading animations
+- 🔄 n8n webhook integration for AI-powered responses
+- 📱 Fully responsive design for all device sizes
+- ⚡ Mock API fallback for offline development
+- 🔄 Auto-scrolling to latest messages
 
-## Setup
+## Running Locally
 
-1. Clone this repository
+1. Clone the repository:
+```bash
+git clone https://github.com/emaduneme/research-chatbot.git
+cd research-chatbot
+```
+
 2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Update the webhook URL:
-   - Open `config/webhook.ts`
-   - Replace `YOUR_N8N_WEBHOOK_URL` with your actual n8n webhook URL
+```bash
+npm install
+```
 
-4. Run the development server:
-   ```
-   npm run dev
-   ```
+3. Start the development server:
+```bash
+npm run dev
+# or with a specific port
+PORT=3333 npm run dev
+```
 
-## n8n Webhook Configuration
+4. Open your browser and navigate to:
+```
+http://localhost:3000
+# or the port specified in the terminal output
+```
 
-1. In your n8n instance, create a new workflow
-2. Add an HTTP Webhook node as a trigger
-3. Configure the webhook to receive POST requests
-4. Set up the workflow to process the incoming message from the `message` field in the request body
-5. Return a response with the following structure:
-   ```json
-   {
-     "response": "Your processed response here"
-   }
-   ```
+## n8n Integration
 
-## Design Principles
+The application connects to n8n webhooks for processing messages. To use your own n8n instance:
 
-- **Simplicity and Clarity**: Clean, uncluttered layout with intuitive navigation
-- **High-Quality Aesthetic**: Refined color palette with neutral tones and subtle accent colors
-- **Function Over Form**: All design choices prioritize usability
-- **Precision in Details**: Carefully considered spacing, typography, and interactions
-- **Human-Centered Design**: Creating a seamless experience across all devices
+1. Update the webhook URL in `app/api/n8n-chat/route.ts`
+2. Set `USE_REAL_WEBHOOK` to `true` for n8n connection or `false` for mock API
 
-## Customization
+## Contributing
 
-- Colors can be modified in `tailwind.config.js`
-- UI components are separated for easy customization
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT 
+This project is licensed under the MIT License - see the LICENSE file for details. 
