@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .glass {
+    @apply bg-white/70 backdrop-blur-lg backdrop-filter dark:bg-gray-900/70;
+  }
+}
+
+:root {
+  --foreground-rgb: 29, 29, 31;
+  --background-rgb: 245, 245, 247;
+  --accent-color: 41, 151, 255;
+  --secondary-color: 134, 134, 139;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 17, 17, 17;
+  --accent-color: 59, 130, 246;
+  --secondary-color: 156, 163, 175;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(134, 134, 139, 0.3);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(134, 134, 139, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+/* Glass effect styling */
+.glass {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .glass {
+  background-color: rgba(30, 30, 30, 0.7);
+  border: 1px solid rgba(80, 80, 80, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Color utilities */
+.text-accent {
+  color: rgb(var(--accent-color));
+}
+
+.bg-accent {
+  background-color: rgb(var(--accent-color));
+}
+
+.text-secondary {
+  color: rgb(var(--secondary-color));
+}
+
+/* Media queries for improved mobile responsiveness */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .glass {
+    backdrop-filter: blur(5px);
+  }
+}
+
+/* Remove iOS touch highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Animation for loading bubbles */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+} 
