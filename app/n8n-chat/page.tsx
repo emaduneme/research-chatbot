@@ -1,47 +1,25 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
+import Link from 'next/link';
 
 export default function N8nChatPage() {
-  useEffect(() => {
-    // We need to dynamically load the n8n chat script because it's client-side
-    const loadN8nChat = async () => {
-      // Add the CSS
-      const link = document.createElement('link');
-      link.href = 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css';
-      link.rel = 'stylesheet';
-      document.head.appendChild(link);
-
-      // Import the chat module
-      try {
-        // Need to dynamically import this using 'import()' instead of 'import from'
-        const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');
-        
-        // Create the chat with your webhook URL
-        createChat({
-          webhookUrl: 'https://emaduneme.app.n8n.cloud/webhook/2512b3b5-c75f-44a8-af7c-066e4ff241a2/chat',
-          mode: 'fullscreen', // Use fullscreen mode
-          initialMessages: [
-            'Hi, I am Mark. What can I help you with?'
-          ],
-          i18n: {
-            en: {
-              title: 'Climate Change Solutions',
-              subtitle: "Ask me anything about climate change and sustainable solutions.",
-              getStarted: 'New Conversation',
-              inputPlaceholder: 'Ask Mark...',
-            },
-          },
-        });
-      } catch (error) {
-        console.error('Failed to load n8n chat:', error);
-      }
-    };
-
-    loadN8nChat();
-  }, []);
+  // For GitHub Pages static export, we've removed the dynamic n8n chat import
+  // and replaced it with a simple redirect/link to the main chat page
 
   return (
-    <div id="n8n-chat" className="w-full h-screen"></div>
+    <div className="w-full h-screen flex flex-col items-center justify-center p-4">
+      <h1 className="text-2xl font-bold mb-4">n8n Chat Integration</h1>
+      <p className="text-center mb-6 max-w-md">
+        The direct n8n chat integration is not available in the static build.
+        Please use our custom chat interface instead.
+      </p>
+      <Link 
+        href="/"
+        className="px-4 py-2 bg-[#2997ff] text-white rounded-full hover:bg-opacity-90"
+      >
+        Go to Main Chat
+      </Link>
+    </div>
   );
 } 
